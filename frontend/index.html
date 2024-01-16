@@ -8,6 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: lightgreen;
         }
 
         #chat-container {
@@ -15,6 +16,7 @@
             margin: auto;
             max-width: 600px;
             height: 100vh;
+            background-color: lightpink;
         }
 
         #chat-box {
@@ -23,6 +25,7 @@
             margin-bottom: 10px;
             padding: 10px;
             overflow-y: scroll;
+            background-color: yellow;
         }
 
         #user-input {
@@ -32,18 +35,36 @@
         #send-button {
             width: 100px;
         }
+
+        main {
+
+            height: 100vh;
+            background-color: lightblue
+        }
+
+        section {
+            border: solid 1px;
+            background-color: lightyellow;
+        }
     </style>
 </head>
 
 <body>
-    <div id="chat-container">
-        <div id="chat-box"></div>
-        <div id="chat-prompt">
-            <input type="text" id="user-input" placeholder="메세지를 입력하세요.">
-            <button id="send-button">보내기</button>
-        </div>
-
-    </div>
+    <main>
+        MAIN
+        <section aria-labelledby="chat-title">
+            SECTION
+            <h1 id="chat-title">도봉이와의 대화방</h1>
+            <div id="chat-container">
+                DIV(CHAT-CONTAINER)
+                <div id="chat-box">
+                    DIV(CHAT-BOX)
+                </div>
+                <input type="text" id="user-input" placeholder="메세지를 입력하세요.">
+                <button type="submit" id="send-button">보내기</button>
+            </div>
+        </section>
+    </main>
     <script src="js/script.js"></script>
 </body>
 

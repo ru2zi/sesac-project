@@ -21,11 +21,13 @@ responses = {
 }
 
 
-@app.get("/chat")
+@app.post("/chat")
 async def chat(user_input: Optional[str] = None):
     if user_input is None:
         return {"message": "입력된 메시지가 없습니다."}
-    return {"User": user_input, "도봉이": responses.get(user_input, "뭔 소리에요?")}
+    response = responses.get(user_input.strip(), "뭔 소리에요?")
+    print(response)
+    return {"User": user_input, "도봉이": response}
 
 
 if __name__ == "__main__":
