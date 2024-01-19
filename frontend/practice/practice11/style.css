@@ -4,25 +4,20 @@
   width: 150px;
   height: 100px;
   margin: 20px;
-  display: inline-block;
-  position: relative;
 }
 
 .box span{
   color: #CCCCCC;
-  right: 5px;
-  bottom: 5px;
-  position: absolute;
 }
 
 #box-group2 #box2{
-  float: right;
+
 }
 
 #box-group3 #box2{
-  position: static;
+
 }
 
 #box-group4 .box{
-  display: block;
+
 }
