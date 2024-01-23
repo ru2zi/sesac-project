@@ -22,7 +22,13 @@ img {
 img:hover {
   transform: scale(1.1);
 }
+/* 
+1. Flex Box 적용할 것
+2. 줄바꿈이 되도록 할 것
+3. 가로 정렬을 `center`로 할 것. */
 
 .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
