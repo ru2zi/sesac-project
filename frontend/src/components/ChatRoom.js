@@ -47,12 +47,12 @@ const ChatRoom = () => {
 
   return (
     <section className=" flex flex-col">
-      <h1 className="text-center text-3xl font-bold mb-4">도봉이와의 대화방</h1>
+      <h1 className="text-center text-3xl font-bold mb-4 text-white">블로그 대필봇</h1>
       <div className="w-full mx-auto my-4 max-w-2xl flex flex-row">
         <div className="w-full mx-auto max-w-3xl h-[80vh] pt-2 flex flex-row">
           <NavBar />
-          <div className="w-full">
-            <div className="h-[70%] w-full border border-gray-300 mb-4 p-2 overflow-y-scroll">
+          <div className="w-full ">
+            <div className="h-[70%] w-full border border-gray-300 mb-4 p-2 overflow-y-scroll bg-white">
               {/* Display chat history */}
               {chatHistory.map((chat, index) => (
                 <div

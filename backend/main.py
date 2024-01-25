@@ -40,7 +40,7 @@ def get_embedding(text, model="text-embedding-ada-002"):
     return client.embeddings.create(input=[text], model=model).data[0].embedding
 
 
-def create_context(question, df, max_len=3000):
+def create_context(question, df, max_len=4000):
     q_embedding = (
         client.embeddings.create(input=question, model="text-embedding-ada-002")
         .data[0]
@@ -53,18 +53,18 @@ def create_context(question, df, max_len=3000):
         cur_len += row["n_tokens"] + 4
         if cur_len > max_len:
             break
-        context_parts.append(row["combined"])
+        context_parts.append(row["text"])
     return "\n\n===\n\n".join(context_parts)
 
 
-def answer_question(question, df, max_len=3000, debug=False):
+def answer_question(question, df, max_len=4000, debug=False):
     context = create_context(question, df, max_len=max_len)
     if debug:
         print("Context:\n" + context)
 
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="ft:gpt-3.5-turbo-0613:personal:blog-posting:8krwiBDj",
             messages=[
                 {
                     "role": "system",
@@ -75,7 +75,7 @@ def answer_question(question, df, max_len=3000, debug=False):
                     "content": f"Context: {context}\n\n---\n\n Question: {question}, 한국어로 번역해서 대답해줘.",
                 },
             ],
-            temperature=0,
+            temperature=0.8,
         )
         return response.choices[0].message.content
     except Exception as e:

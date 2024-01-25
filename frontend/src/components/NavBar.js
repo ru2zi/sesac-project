@@ -1,8 +1,8 @@
 const NavBar = () => {
   return (
-    <aside className="sticky top-12 h-1/3 w-1/3 border border-gray-300 p-2.5">
+    <aside className="sticky top-12 h-1/3 w-1/3 border border-gray-300 p-2.5 bg-white">
       <h1 className="text-center border-b border-gray-300 font-extrabold">
-        도봉이 친구들
+        블로그 유형
       </h1>
       <ul className="list-none text-center">
         <li>
@@ -10,7 +10,7 @@ const NavBar = () => {
             href="#link1"
             className="block p-2.5 border-b border-gray-300 hover:bg-gray-100"
           >
-            노원이
+            일상글
           </a>
         </li>
         <li>
@@ -18,7 +18,7 @@ const NavBar = () => {
             href="#link2"
             className="block p-2.5 border-b border-gray-300 hover:bg-gray-100"
           >
-            남구
+            지식글
           </a>
         </li>
         <li>
@@ -26,7 +26,7 @@ const NavBar = () => {
             href="#link3"
             className="block p-2.5 border-b border-gray-300 hover:bg-gray-100"
           >
-            북구북구
+            감성글
           </a>
         </li>
         <li>
@@ -34,7 +34,7 @@ const NavBar = () => {
             href="#link4"
             className="block p-2.5 border-b border-gray-300 hover:bg-gray-100"
           >
-            산이
+            학습글
           </a>
         </li>
       </ul>

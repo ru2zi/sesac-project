@@ -20,12 +20,7 @@
     "eject": "react-scripts eject",
     "hello": "echo hello"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+
   "browserslist": {
     "production": [
       ">0.2%",

@@ -11,7 +11,7 @@ const Header = () => {
               href="/"
               className="text-white no-underline block hover:bg-gray-900"
             >
-              홈
+              HOME
             </a>
           </li>
           <li className="inline-block p-2 w-1/5">
@@ -19,7 +19,7 @@ const Header = () => {
               href="news"
               className="text-white no-underline block hover:bg-gray-900"
             >
-              도봉이 근황 보기
+              Another Posting
             </a>
           </li>
           <li className="inline-block p-2 w-1/5">
@@ -27,7 +27,7 @@ const Header = () => {
               href="contact"
               className="text-white no-underline block hover:bg-gray-900"
             >
-              도봉이 만든 사람 소개
+              Profile
             </a>
           </li>
           <li className="inline-block p-2 w-1/5">
@@ -35,7 +35,7 @@ const Header = () => {
               href="about"
               className="text-white no-underline block hover:bg-gray-900"
             >
-              도봉이는...
+              GOOD...
             </a>
           </li>
         </ul>

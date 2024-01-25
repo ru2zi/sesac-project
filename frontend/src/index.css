@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #03C75A; /* 배경색을 연두색으로 설정 */
 }
 
 code {

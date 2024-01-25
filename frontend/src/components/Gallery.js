@@ -18,14 +18,14 @@ const Gallery = () => {
 
   return (
     <>
-      <h1 className="text-center text-3xl font-bold mb-4">Gallery</h1>
+      <h1 className="text-center text-3xl font-bold mb-4 text-white">Gallery</h1>
       <div className="text-center my-4 border border-black flex flex-wrap justify-center w-2/3 m-auto">
         {imageUrls.map((url, index) => (
           <img
             key={index}
             src={url}
             alt={`Gallery Item ${index + 1}`}
-            className="w-48 m-2 transition-transform duration-300 hover:scale-110"
+            className="w-48 m-2 transition-transform duration-300 hover:scale-110 "
           />
         ))}
       </div>
