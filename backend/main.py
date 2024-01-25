@@ -77,6 +77,9 @@ def answer_question(question, df, max_len=3000, debug=False):
         return "I don't know"
 
 
+# 아래 함수가 핵심이다. 나머지 함수는 보조 목적으로 사용하는 함수다.
+
+
 @app.post("/chat")
 async def chat(input_data: ChatInput):
     user_input = input_data.user_input
