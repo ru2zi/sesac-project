@@ -9,6 +9,12 @@ import os
 from openai import OpenAI
 from pydantic import BaseModel
 
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv('data/practice/.env'))
+from openai import OpenAI
+
+client = OpenAI()
+openai.api_key  = os.getenv('OPENAI_API_KEY')
 
 class ChatInput(BaseModel):
     user_input: Optional[str] = None
