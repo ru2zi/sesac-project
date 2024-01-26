@@ -5,9 +5,11 @@ import pandas as pd
 import openai
 from dotenv import load_dotenv
 from scipy.spatial.distance import cosine
+from datetime import datetime
 import os
 from openai import OpenAI
 from pydantic import BaseModel
+import json
 
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv('data/practice/.env'))
@@ -64,7 +66,7 @@ def answer_question(question, df, max_len=4000, debug=False):
 
     try:
         response = client.chat.completions.create(
-            model="ft:gpt-3.5-turbo-0613:personal:blog-posting:8krwiBDj",
+            model="ft:gpt-3.5-turbo-0613:sesac::8lBIAPD3",
             messages=[
                 {
                     "role": "system",
@@ -75,7 +77,7 @@ def answer_question(question, df, max_len=4000, debug=False):
                     "content": f"Context: {context}\n\n---\n\n Question: {question}, 한국어로 번역해서 대답해줘.",
                 },
             ],
-            temperature=0.8,
+            temperature=0.6,
         )
         return response.choices[0].message.content
     except Exception as e:
@@ -85,6 +87,16 @@ def answer_question(question, df, max_len=4000, debug=False):
 
 # 아래 함수가 핵심이다. 나머지 함수는 보조 목적으로 사용하는 함수다.
 
+@app.post("/reset_chat_history")
+async def reset_chat_history():
+    data = []  # 초기화 된 데이터
+
+    # Save the data
+    with open('chat_history.txt', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False)
+
+    return {"status": "Chat history reset successfully"}
+
 
 @app.post("/chat")
 async def chat(input_data: ChatInput):
@@ -93,9 +105,52 @@ async def chat(input_data: ChatInput):
 
     if user_input is None:
         return {"message": "입력된 메시지가 없습니다."}
+    
+    sample = {
+        'title': [user_input], 
+        'date': [datetime.now()]
+    }
+    
+    test_messages = []
+    test_messages.append({"role": "system", "content": "You are a helpful Personal assistant. You are to extract the personal experience from each of the posting provided."})
+    test_messages.append({"role": "user", "content": f"Title: {sample['title'][0]}\nPosting date: {sample['date'][0]}\n\nPersonal experience: "})
+    
+    try:
+        response = openai.chat.completions.create(
+            model="ft:gpt-3.5-turbo-0613:sesac::8lBIAPD3", messages=test_messages, temperature=0.6, max_tokens=3997
+        )
+        reply = response.choices[0].message.content
+    except Exception as e:
+        print("Error occurred:", e)
+        reply = "I don't know"
 
-    response = answer_question(user_input, df, debug=True)
-    return {"User": user_input, "도봉이": response}
+    # Load existing data
+    try:
+        with open('chat_history.txt', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        data = []
+
+    # Add new data
+    data.append({
+        'index': len(data),
+        'User': user_input,
+        '도봉이': reply
+    })
+
+    # Save the data
+    with open('chat_history.txt', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False)
+
+    return {"User": user_input, "도봉이": reply}
+
+
+
+@app.get("/chat_history")
+async def get_chat_history():
+    with open('chat_history.txt', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return data
 
 
 # Run the server
