@@ -18,7 +18,7 @@ const Gallery = () => {
 
   return (
     <>
-      <h1 className="text-center text-3xl font-bold mb-4 text-white">Gallery</h1>
+      <h1 className="text-center text-3xl font-bold mb-4 text-white">Thumbnail</h1>
       <div className="text-center my-4 border border-black flex flex-wrap justify-center w-2/3 m-auto">
         {imageUrls.map((url, index) => (
           <img

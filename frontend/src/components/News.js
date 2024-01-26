@@ -5,14 +5,15 @@ const newsData = [
     id: 1,
     title: "첫번째 포스팅 추천",
     summary: "[SESAC] 청년취업사관학교(도봉 캠퍼스) 준비 과정 및 일주일 후기",
-    img: `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`,
+    img: 'https://postfiles.pstatic.net/MjAyNDAxMDZfMTU3/MDAxNzA0NTE5Nzc1MDMz.ipwleixvvV2D_MNFlSS1_4wtMm0WcIwXeKbxAIwejRYg.eIOHv3ZWqZXDz4jvhmGuohfK4p92NbTD2WLKweqqPHAg.PNG.inno06039/image.png?type=w773',
     link: "https://blog.naver.com/inno06039/223314262954",
+    
   },
   {
     id: 2,
     title: "두번째 포스팅 추천",
     summary: "Etri 랩실? 하계 인턴 2주 해보고 느낀 것들 정리해보기",
-    img: `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`,
+    img: `https://postfiles.pstatic.net/MjAyMzA3MTRfMjk4/MDAxNjg5MzM4ODk1NDUx.PPCGbNtZrdQLzjP8tLkv1VA-X_lXSRM1LQQ-8dlmibAg.X5VXW3-BzIbVEkK-z9O2t6jIVHqe_r6ZEsZKh4fBsHAg.PNG.inno06039/image.png?type=w773`,
     link: "https://blog.naver.com/inno06039/223156524687",
   },
 ];
@@ -38,7 +39,7 @@ function News() {
               </a>
             </div>
             <a href={newsItem.link}>
-              <img src={newsItem.img} alt="News" className="w-full h-full object-cover" />
+              <img referrerPolicy="no-referrer" src={newsItem.img} alt="News" className="w-[300px] h-[300px] object-contain" />
             </a>
           </div>
         ))}

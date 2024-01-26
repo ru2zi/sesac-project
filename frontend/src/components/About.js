@@ -6,10 +6,13 @@ const About = () => {
       <section className="mb-6 text-center">
         <h2 className="text-2xl font-semibold mb-3 text-white">도봉이 이야기</h2>
         <p className="text-lg text-white">
-          2024년 1월 2일, 창동역 앞에서 도봉이는 태어났어요. 도봉이는 SeSAC반
-          친구들의 맞춤형 블로그 글쓰기를 돕기 위해 이 세상에 나왔답니다.
-        </p>
-      </section>
+          2024년 1월 2일, 창동역 앞에서 도봉이는 태어났어요.
+          </p>
+          <p className="text-lg text-white">
+            도봉이는 SeSAC반 친구들의 맞춤형 블로그 글쓰기를 돕기 위해 이 세상에 나왔답니다.
+            </p>
+            </section>
+
 
       <section className="mb-6 text-center">
         <h2 className="text-2xl font-semibold mb-3 text-white">Mission</h2>
