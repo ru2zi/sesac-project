@@ -10,6 +10,8 @@ import os
 from openai import OpenAI
 from pydantic import BaseModel
 import json
+from py_hanspell.hanspell import spell_checker
+from pydantic import BaseModel
 
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv('data/practice/.env'))
@@ -82,7 +84,7 @@ def answer_question(question, df, max_len=4000, debug=False):
         return response.choices[0].message.content
     except Exception as e:
         print("Error occurred:", e)
-        return "I don't know"
+        return "잘 모르겠다..!"
 
 
 # 아래 함수가 핵심이다. 나머지 함수는 보조 목적으로 사용하는 함수다.
@@ -117,12 +119,12 @@ async def chat(input_data: ChatInput):
     
     try:
         response = openai.chat.completions.create(
-            model="ft:gpt-3.5-turbo-0613:sesac::8lBIAPD3", messages=test_messages, temperature=0.6, max_tokens=3997
+            model="ft:gpt-3.5-turbo-0613:sesac::8lBIAPD3", messages=test_messages, temperature=0.6, max_tokens=2000
         )
         reply = response.choices[0].message.content
     except Exception as e:
         print("Error occurred:", e)
-        reply = "I don't know"
+        reply = "잘 모르겠다..!"
 
     # Load existing data
     try:
@@ -144,6 +146,18 @@ async def chat(input_data: ChatInput):
 
     return {"User": user_input, "도봉이": reply}
 
+# 메시지 교정을 위한 입력 모델을 추가합니다.
+class CorrectionInput(BaseModel):
+    message: str
+
+@app.post("/correct_message")
+async def correct_message(correction_data: CorrectionInput):
+    # 클라이언트로부터 받은 메시지를 교정합니다.
+    spelled_sent = spell_checker.check(correction_data.message)
+    corrected_message = spelled_sent.checked
+
+    # 교정된 메시지를 반환합니다.
+    return {"corrected_message": corrected_message}
 
 
 @app.get("/chat_history")

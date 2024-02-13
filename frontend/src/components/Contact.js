@@ -10,11 +10,11 @@ function Contact() {
             className="inline-block rounded-full w-64 h-64"
           />
           <h3 className="text-xl font-semibold mt-2 text-white">김인호</h3>
-          <p className="text-white">코드 어려움 </p>
+          <p className="text-white">잘하기 위해 노력합니다. </p>
         </div>
         <div className="mb-4 text-center">
           <h4 className="text-lg font-semibold text-white">개발자 소개</h4>
-          <p className="text-white">저는 도봉이 입니다. 만나서 반가워요.</p>
+          <p className="text-white">[늘품] 데이터사이언티스트 김인호입니다.</p>
         </div>
         <div className="mb-4 text-center">
           <h4 className="text-lg font-semibold text-white">기술 스택</h4>
@@ -22,7 +22,7 @@ function Contact() {
         </div>
         <div className="mb-4 text-center">
           <h4 className="text-lg font-semibold text-white">경력</h4>
-          <p className="text-white">무직</p>
+          <p className="text-white">1번의 인턴 경험과 3번의 수상 경험이 있습니다.</p>
           <p className="text-white">구직</p>
         </div>
         <div>

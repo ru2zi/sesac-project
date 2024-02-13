@@ -24,10 +24,24 @@ const Correction = () => {
 
     if (index >= 0 && chatHistory[index]) {
       const messageToCorrect = chatHistory[index].도봉이;
-      const corrected = messageToCorrect;
-      setCorrectedText(corrected);
+
+      // 서버에 교정 요청을 보냅니다.
+      fetch('http://localhost:8000/correct_message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: messageToCorrect })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // 교정된 메시지를 상태로 저장하여 화면에 표시합니다.
+        setCorrectedText(data.corrected_message);
+      })
+      .catch(err => console.error(err));
     }
   };
+
 
 // 초기화 함수
 const handleReset = () => {

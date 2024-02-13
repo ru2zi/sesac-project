@@ -90,7 +90,7 @@ const ChatRoom = () => {
               onClick={sendMessage}
               className="w-1/5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
-              보내봐
+              보내기
             </button>
             <button
               onClick={handleReset}
